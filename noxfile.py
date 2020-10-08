@@ -5,7 +5,7 @@ import nox_poetry.core
 nox_poetry.core.patch()
 
 PACKAGE_NAME = "flask_dotprof"
-PACKAGE_FILES = [PACKAGE_NAME, "noxfile.py"]
+PACKAGE_FILES = [PACKAGE_NAME, "noxfile.py", "test_app"]
 
 
 @nox.session(python="3.8")
