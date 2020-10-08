@@ -1,0 +1,7 @@
+pip-tools==5.3.1
+nox==2020.5.24
+black==19.10b0
+mypy==0.782
+flake8==3.8.3
+flake8-isort==3.0.1
+isort==4.3.21
