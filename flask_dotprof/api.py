@@ -2,12 +2,17 @@ import os
 import subprocess
 from typing import Any
 
-from flask import Blueprint, current_app
+from flask import Blueprint, current_app, jsonify
 
 api = Blueprint("flask_dotprof_api", __name__)
 
 
-@api.route("/profile/<string:name>")
+@api.route("/profiles")
+def get_profiles() -> Any:
+    return jsonify(profiles=os.listdir(current_app.config["DOTPROF_PROFILE_PATH"]))
+
+
+@api.route("/profiles/<string:name>")
 def get_profile(name: str) -> Any:
     process = subprocess.run(
         [
