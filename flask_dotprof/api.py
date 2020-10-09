@@ -1,10 +1,24 @@
+import os
+import subprocess
 from typing import Any
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, current_app
 
 api = Blueprint("flask_dotprof_api", __name__)
 
 
-@api.route("/test")
-def test() -> Any:
-    return jsonify(test=True), 418
+@api.route("/profile/<string:name>")
+def get_profile(name: str) -> Any:
+    process = subprocess.run(
+        [
+            "gprof2dot",
+            "-f",
+            "pstats",
+            os.path.join(current_app.config["DOTPROF_PROFILE_PATH"], name),
+        ],
+        capture_output=True,
+    )
+    process.check_returncode()
+    svg = subprocess.run(["dot", "-Tsvg"], input=process.stdout, capture_output=True)
+    svg.check_returncode()
+    return svg.stdout.decode("utf8")

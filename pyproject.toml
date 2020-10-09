@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.6.1"
 flask = "^1.1.2"
 werkzeug = "^1.0.0"
+gprof2dot = "^2019.11.30"
 
 [tool.poetry.dev-dependencies]
 nox = "^2020.8.22"
