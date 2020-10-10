@@ -31,9 +31,7 @@ def get_profile(name: str) -> Any:
         capture_output=True,
     )
     process.check_returncode()
-    svg = subprocess.run(["dot", "-Tsvg"], input=process.stdout, capture_output=True)
-    svg.check_returncode()
-    return svg.stdout.decode("utf8")
+    return process.stdout.decode("utf8")
 
 
 @api.route("/", defaults={"path": ""})
