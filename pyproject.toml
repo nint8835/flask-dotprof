@@ -4,6 +4,7 @@ version = "1.0.0"
 description = "Graphviz-based profile viewer for Flask"
 authors = ["Riley Flynn <riley@rileyflynn.me>"]
 license = "MIT"
+include = ["flask_dotprof/frontend/build/**/*"]
 
 [tool.poetry.dependencies]
 python = "^3.6.1"

@@ -28,7 +28,7 @@ def get_profile(name: str) -> Any:
             "pstats",
             os.path.join(current_app.config["DOTPROF_PROFILE_PATH"], name),
         ],
-        capture_output=True,
+        stdout=subprocess.PIPE,
     )
     process.check_returncode()
     return process.stdout.decode("utf8")
